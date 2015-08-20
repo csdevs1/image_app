@@ -1,0 +1,17 @@
+<% @products.each do |product| %>
+    <% image = Image.where(:product_id => product.id) %>
+    <% n = image.length %>
+    <% num = 0 %>
+    <% until num >= n %>
+        <%= raw "<p>" %>
+        <%= image_tag image[num].image.url %>
+        <%= raw "</p>" %>
+     <% num +=1 %>
+    <% end %>
+    <p><%= product.info %></p>
+    <p><%= product.price %></p>
+    <p><%= product.description %></p>
+<% end %>
+
+
+<%= link_to 'New Product', "products/new" %>
